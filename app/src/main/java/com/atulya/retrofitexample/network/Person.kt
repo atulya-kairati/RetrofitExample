@@ -2,7 +2,7 @@ package com.atulya.retrofitexample.network
 
 import com.squareup.moshi.Json
 
-data class Character(
+data class Person(
 
     @Json(name = "name")
     val name: String,

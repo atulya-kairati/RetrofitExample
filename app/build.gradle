@@ -30,6 +30,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -54,5 +58,10 @@ dependencies {
     // https://mvnrepository.com/artifact/io.coil-kt/coil
     implementation 'io.coil-kt:coil:2.2.2'
 
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
 }

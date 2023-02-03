@@ -1,11 +1,44 @@
 package com.atulya.retrofitexample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.GridLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.atulya.retrofitexample.databinding.ActivityMainBinding
+import com.atulya.retrofitexample.network.ApiClient
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.await
+
+const val TAG = "#MainActivity"
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+        binding.rvCharacter.layoutManager = GridLayoutManager(applicationContext,2)
+
+        lifecycleScope.launch(Dispatchers.IO) {
+
+            try {
+                val res = ApiClient.apiService.fetchCharacter("1").await()
+                Log.d(TAG, "onCreate: $res")
+                launch(Dispatchers.Main) {
+                    binding.rvCharacter.adapter = Adapter(res.result)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
     }
 }
