@@ -6,10 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.atulya.retrofitexample.databinding.ActivityMainBinding
-import com.atulya.retrofitexample.network.ApiClient
+import com.atulya.retrofitexample.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.await
 
 const val TAG = "#MainActivity"
 
@@ -23,16 +22,18 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        val repository = Repository.get()
+
         binding.rvCharacter.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         lifecycleScope.launch(Dispatchers.IO) {
 
             try {
-                val res = ApiClient.apiService.fetchCharacter("1").await()
-                Log.d(TAG, "onCreate: $res")
+                val people = repository.fetchPeople()
+                Log.d(TAG, "onCreate: $people")
                 launch(Dispatchers.Main) {
-                    binding.rvCharacter.adapter = Adapter(res.result)
+                    binding.rvCharacter.adapter = Adapter(people)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

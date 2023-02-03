@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.atulya.retrofitexample.databinding.ListItemBinding
-import com.atulya.retrofitexample.network.Person
+import com.atulya.retrofitexample.models.Person
 
 class Adapter(private val list: List<Person>) : RecyclerView.Adapter<Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

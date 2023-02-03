@@ -1,8 +1,8 @@
-package com.atulya.retrofitexample.network
+package com.atulya.retrofitexample.models
 
 import com.squareup.moshi.Json
 
 data class PersonResult(
     @Json(name = "results")
-    val result: List<Person>
+    val people: List<Person>
 )

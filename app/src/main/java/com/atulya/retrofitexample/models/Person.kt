@@ -1,4 +1,4 @@
-package com.atulya.retrofitexample.network
+package com.atulya.retrofitexample.models
 
 import com.squareup.moshi.Json
 
