@@ -2,8 +2,10 @@ package com.atulya.retrofitexample
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.collection.CircularArray
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.atulya.retrofitexample.databinding.ListItemBinding
 import com.atulya.retrofitexample.network.Person
 
@@ -27,6 +29,8 @@ class Adapter(private val list: List<Person>) : RecyclerView.Adapter<Holder>(){
 class Holder(private val binding: ListItemBinding): RecyclerView.ViewHolder(binding.root){
     fun bind(person: Person){
         binding.characterName.text = person.name
-        binding.characterImage.load(person.image)
+        binding.characterImage.load(person.image){
+            transformations(CircleCropTransformation())
+        }
     }
 }

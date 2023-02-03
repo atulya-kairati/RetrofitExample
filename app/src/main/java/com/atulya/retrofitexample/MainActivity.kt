@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.atulya.retrofitexample.databinding.ActivityMainBinding
 import com.atulya.retrofitexample.network.ApiClient
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.rvCharacter.layoutManager = GridLayoutManager(applicationContext,2)
+        binding.rvCharacter.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         lifecycleScope.launch(Dispatchers.IO) {
 
