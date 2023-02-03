@@ -2,11 +2,8 @@ package com.atulya.retrofitexample
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.atulya.retrofitexample.databinding.ActivityMainBinding
 import com.atulya.retrofitexample.network.ApiClient
@@ -26,7 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.rvCharacter.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        binding.rvCharacter.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         lifecycleScope.launch(Dispatchers.IO) {
 
