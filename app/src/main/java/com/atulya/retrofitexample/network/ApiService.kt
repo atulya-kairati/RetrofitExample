@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("character")
-    fun fetchCharacter(@Query(value = "page") page: String): Call<PersonResult>
+    suspend fun fetchCharacter(@Query(value = "page") page: String): PersonResult
 }

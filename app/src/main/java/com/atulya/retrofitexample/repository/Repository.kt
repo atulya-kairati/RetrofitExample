@@ -26,7 +26,7 @@ class Repository private constructor(){
         retrofit.create(ApiService::class.java)
     }
 
-    suspend fun fetchPeople(): List<Person> = apiService.fetchCharacter("1").await().people
+    suspend fun fetchPeople(): List<Person> = apiService.fetchCharacter("1").people
 
     companion object {
         private var INSTANCE: Repository? = null
